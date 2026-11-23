@@ -1,0 +1,17 @@
+# Example n-alkane ladder retention times (minutes).
+# REPLACE with your own ladder injection; these are illustrative only and
+# depend on column, carrier flow and oven program.
+carbons,rt_min
+8,3.20
+10,5.40
+12,7.90
+14,10.60
+16,13.30
+18,16.00
+20,18.60
+22,21.10
+24,23.50
+26,25.80
+28,28.00
+30,30.10
+32,32.10
