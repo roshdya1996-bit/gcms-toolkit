@@ -10,14 +10,17 @@ import os
 from gcms_toolkit import export_agilent_masshunter, filter_transitions, load_transitions, validate
 
 here = os.path.dirname(__file__)
-transitions = load_transitions(os.path.join(here, "..", "data", "mrm_transitions_gcms_example.csv"))
+transitions = load_transitions(os.path.join(here, "..", "data", "mrm_transitions_food_example.csv"))
 
 problems = validate(transitions)
 print(f"loaded {len(transitions)} transitions, validation problems: {problems or 'none'}")
 
-# Keep only the organophosphates for a small OP screen.
-ops = filter_transitions(transitions, classes=["organophosphate"])
-compounds = sorted({t.compound for t in ops})
-print(f"\norganophosphate screen: {len(compounds)} compounds: {', '.join(compounds)}\n")
+# Keep only the common parabens for a small preservative screen.
+screen = filter_transitions(
+    transitions,
+    compounds=["Methylparaben", "Ethylparaben", "Propylparaben", "Butylparaben", "Benzoic acid"],
+)
+compounds = sorted({t.compound for t in screen})
+print(f"\npreservative screen: {len(compounds)} compounds: {', '.join(compounds)}\n")
 
-print(export_agilent_masshunter(ops))
+print(export_agilent_masshunter(screen))

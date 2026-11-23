@@ -15,7 +15,7 @@ from gcms_toolkit.mrm import (
     write_transitions,
 )
 
-DATA = os.path.join(os.path.dirname(__file__), "..", "data", "mrm_transitions_gcms_example.csv")
+DATA = os.path.join(os.path.dirname(__file__), "..", "data", "mrm_transitions_food_example.csv")
 
 
 class TestTransitionData(unittest.TestCase):
@@ -28,7 +28,7 @@ class TestTransitionData(unittest.TestCase):
 
     def test_every_compound_has_quant_and_qual(self):
         compounds = {t.compound for t in self.transitions}
-        self.assertGreaterEqual(len(compounds), 25)
+        self.assertGreaterEqual(len(compounds), 20)
         for c in compounds:
             roles = [t.role for t in self.transitions if t.compound == c]
             self.assertIn("quant", roles, c)
@@ -39,12 +39,16 @@ class TestTransitionData(unittest.TestCase):
             self.assertLess(t.product_mz, t.precursor_mz, t.compound)
 
     def test_blank_ce_loads_as_none(self):
-        diazinon = [t for t in self.transitions if t.compound == "Diazinon"]
-        self.assertTrue(all(t.ce_ev is None for t in diazinon))
+        t = Transition("X", "0-00-0", "test", 200.0, 100.0, None, "quant")
+        self.assertIsNone(t.ce_ev)
+
+    def test_all_bundled_rows_have_ce(self):
+        # this starter list ships only fully sourced transitions incl. CE
+        self.assertTrue(all(t.ce_ev is not None for t in self.transitions))
 
     def test_known_ce_loads(self):
-        chlorpyrifos = [t for t in self.transitions if t.compound == "Chlorpyrifos" and t.role == "quant"][0]
-        self.assertEqual((chlorpyrifos.precursor_mz, chlorpyrifos.product_mz, chlorpyrifos.ce_ev), (314.0, 258.0, 15.0))
+        mep = [t for t in self.transitions if t.compound == "Methylparaben" and t.role == "quant"][0]
+        self.assertEqual((mep.precursor_mz, mep.product_mz, mep.ce_ev), (121.0, 93.1, 12.0))
 
 
 class TestValidation(unittest.TestCase):
@@ -74,13 +78,13 @@ class TestFilterAndExport(unittest.TestCase):
         cls.transitions = load_transitions(DATA)
 
     def test_filter_by_class(self):
-        ops = filter_transitions(self.transitions, classes=["organophosphate"])
+        ops = filter_transitions(self.transitions, classes=["phthalate (food-contact migrant)"])
         self.assertTrue(ops)
-        self.assertTrue(all(t.compound_class == "organophosphate" for t in ops))
+        self.assertTrue(all(t.compound_class == "phthalate (food-contact migrant)" for t in ops))
 
     def test_filter_by_compound_case_insensitive(self):
-        sub = filter_transitions(self.transitions, compounds=["malathion"])
-        self.assertEqual({t.compound for t in sub}, {"Malathion"})
+        sub = filter_transitions(self.transitions, compounds=["methylparaben"])
+        self.assertEqual({t.compound for t in sub}, {"Methylparaben"})
 
     def test_exporters_produce_csv_with_all_rows(self):
         n = len(self.transitions)

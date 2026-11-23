@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gcms-toolkit"
 version = "0.1.0"
-description = "Small helpers for GC-MS/MS pesticide residue work: retention indices and MRM transition lists"
+description = "Small helpers for GC-MS/MS food additive analysis: retention indices and MRM transition lists"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
 authors = [{ name = "Roshdy Adel Mohamed Gharib" }]
-keywords = ["gc-ms", "gc-ms/ms", "mrm", "pesticides", "residue analysis", "retention index"]
+keywords = ["gc-ms", "gc-ms/ms", "mrm", "food additives", "preservatives", "phthalates", "retention index"]
 classifiers = [
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",

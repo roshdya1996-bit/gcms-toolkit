@@ -1,0 +1,67 @@
+# GC-MS/MS (EI, triple quadrupole) MRM starter list for food additive
+# analysis: preservatives (parabens, benzoic acid, benzyl alcohol) and
+# phthalate food-contact migrants.
+#
+# Every transition AND collision energy below is taken from the cited public
+# source (see note column and README "Data sources") - nothing is estimated.
+# Still treat CEs as starting points: they are instrument- and tune-dependent,
+# so re-optimize on your own instrument before validated routine use.
+#
+# The parabens all fragment through the common m/z 121 ion on a DB-5ms-type
+# column, so chromatographic separation does the selectivity work - this is
+# exactly where the retention index tools in this toolkit help.
+#
+# Identification for confirmatory work (SANTE 11312/2021 style) needs
+# >= 2 transitions per compound with ion-ratio tolerances; the validate()
+# helper checks each compound has exactly one quantifier and >= 1 qualifier.
+compound,cas,compound_class,precursor_mz,product_mz,ce_ev,role,rt_min,note
+Benzoic acid,65-85-0,preservative (E210),105,77.1,15,quant,,ions+CE per PMC10782272 (DB-5MS; RI 1855)
+Benzoic acid,65-85-0,preservative (E210),105,51.1,27,qual,,ions+CE per PMC10782272 (DB-5MS)
+Benzyl alcohol,100-51-6,preservative / flavouring,79,77.1,15,quant,,ions+CE per PMC10782272 (DB-5MS; RI 1730)
+Benzyl alcohol,100-51-6,preservative / flavouring,79.1,51,24,qual,,ions+CE per PMC10782272 (DB-5MS)
+Methylparaben,99-76-3,paraben preservative (E218),121,93.1,12,quant,,ions+CE per PMC10782272 (DB-5MS; RI 2151)
+Methylparaben,99-76-3,paraben preservative (E218),121,65.1,21,qual,,ions+CE per PMC10782272 (DB-5MS)
+Ethylparaben,120-47-8,paraben preservative (E214),121,93.1,12,quant,,ions+CE per PMC10782272 (DB-5MS; RI 2220)
+Ethylparaben,120-47-8,paraben preservative (E214),121,65.1,21,qual,,ions+CE per PMC10782272 (DB-5MS)
+Isopropylparaben,4191-73-5,paraben preservative,121,93.1,12,quant,,ions+CE per PMC10782272 (DB-5MS; RI 2251)
+Isopropylparaben,4191-73-5,paraben preservative,121,65.1,21,qual,,ions+CE per PMC10782272 (DB-5MS)
+Propylparaben,94-13-3,paraben preservative (E216),121,65.1,21,quant,,ions+CE per PMC10782272 (DB-5MS; RI 2321)
+Propylparaben,94-13-3,paraben preservative (E216),121,93.1,12,qual,,ions+CE per PMC10782272 (DB-5MS)
+Isobutylparaben,4247-02-3,paraben preservative,121,93.1,12,quant,,ions+CE per PMC10782272 (DB-5MS; RI 2380)
+Isobutylparaben,4247-02-3,paraben preservative,121,65.1,21,qual,,ions+CE per PMC10782272 (DB-5MS)
+Butylparaben,94-26-8,paraben preservative,121,65.1,21,quant,,ions+CE per PMC10782272 (DB-5MS; RI 2425)
+Butylparaben,94-26-8,paraben preservative,121,93.1,12,qual,,ions+CE per PMC10782272 (DB-5MS)
+Phenylparaben,17696-62-7,paraben preservative,121,65.1,21,quant,,ions+CE per PMC10782272 (DB-5MS; RI 2744)
+Phenylparaben,17696-62-7,paraben preservative,121,93.1,12,qual,,ions+CE per PMC10782272 (DB-5MS)
+Benzylparaben,94-18-8,paraben preservative,121,65.1,21,quant,,ions+CE per PMC10782272 (DB-5MS; RI 2843)
+Benzylparaben,94-18-8,paraben preservative,121,93.1,12,qual,,ions+CE per PMC10782272 (DB-5MS)
+Dimethyl phthalate (DMP),131-11-3,phthalate (food-contact migrant),163,77,24,quant,,ions+CE per PMC9743266 Table 1
+Dimethyl phthalate (DMP),131-11-3,phthalate (food-contact migrant),163,92,24,qual,,ions+CE per PMC9743266 Table 1
+Diethyl phthalate (DEP),84-66-2,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Diethyl phthalate (DEP),84-66-2,phthalate (food-contact migrant),177,149,9,qual,,ions+CE per PMC9743266 Table 1
+Diisobutyl phthalate (DIBP),84-69-5,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Diisobutyl phthalate (DIBP),84-69-5,phthalate (food-contact migrant),149,93,24,qual,,ions+CE per PMC9743266 Table 1
+Dibutyl phthalate (DBP),84-74-2,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Dibutyl phthalate (DBP),84-74-2,phthalate (food-contact migrant),149,93,24,qual,,ions+CE per PMC9743266 Table 1
+Bis(4-methyl-2-pentyl) phthalate (BMPP),,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Bis(4-methyl-2-pentyl) phthalate (BMPP),,phthalate (food-contact migrant),167,149,9,qual,,ions+CE per PMC9743266 Table 1
+Bis(2-ethoxyethyl) phthalate (DEEP),,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Bis(2-ethoxyethyl) phthalate (DEEP),,phthalate (food-contact migrant),176,149,9,qual,,ions+CE per PMC9743266 Table 1
+Dipentyl phthalate (DPP),131-18-0,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Dipentyl phthalate (DPP),131-18-0,phthalate (food-contact migrant),149,93,24,qual,,ions+CE per PMC9743266 Table 1
+Dihexyl phthalate (DHP),,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Dihexyl phthalate (DHP),,phthalate (food-contact migrant),149,93,24,qual,,ions+CE per PMC9743266 Table 1
+Benzyl butyl phthalate (BBP),85-68-7,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Benzyl butyl phthalate (BBP),85-68-7,phthalate (food-contact migrant),206,149,9,qual,,ions+CE per PMC9743266 Table 1
+Bis(2-butoxyethyl) phthalate (DBEP),,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Bis(2-butoxyethyl) phthalate (DBEP),,phthalate (food-contact migrant),193,149,24,qual,,ions+CE per PMC9743266 Table 1
+Dicyclohexyl phthalate (DCHP),84-61-7,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Dicyclohexyl phthalate (DCHP),84-61-7,phthalate (food-contact migrant),149,93,24,qual,,ions+CE per PMC9743266 Table 1
+Di-n-hexyl phthalate (DnHP),84-75-3,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Di-n-hexyl phthalate (DnHP),84-75-3,phthalate (food-contact migrant),149,93,24,qual,,ions+CE per PMC9743266 Table 1
+Diphenyl phthalate (DPhP),84-62-8,phthalate (food-contact migrant),225,77,24,quant,,ions+CE per PMC9743266 Table 1
+Diphenyl phthalate (DPhP),84-62-8,phthalate (food-contact migrant),225,115,33,qual,,ions+CE per PMC9743266 Table 1
+Di-n-octyl phthalate (DNOP),117-84-0,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Di-n-octyl phthalate (DNOP),117-84-0,phthalate (food-contact migrant),149,93,24,qual,,ions+CE per PMC9743266 Table 1
+Dinonyl phthalate (DNP),84-76-4,phthalate (food-contact migrant),149,65,24,quant,,ions+CE per PMC9743266 Table 1
+Dinonyl phthalate (DNP),84-76-4,phthalate (food-contact migrant),149,93,24,qual,,ions+CE per PMC9743266 Table 1
